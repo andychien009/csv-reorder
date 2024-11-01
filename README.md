@@ -78,8 +78,7 @@ a,b,c
 21,22,23
 ```
 
-One can acquire the database schema ordering easily by doing a SELECT * query
-and save the result as CSV, which is exactly as per the design of this tool.
+One can acquire the database schema that will establish column order easily by doing a SELECT * query and save the result as CSV. The ease of producing the definition file that will establish the column order is exactly as per the design of this tool.
 
 ```SQL
 SELECT TOP 1 *
