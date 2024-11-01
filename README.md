@@ -17,14 +17,14 @@ alter your data as part or the reorder operations when compare to other
 approaches; no muss no fuss.
 
 ## Installation
-There is no user interface to this program, it will have to be executed through PowerShell or bash.
+There is no user interface to this program. Double clicking on it does not work. It will have to be executed through PowerShell or bash so you can supply additional parameters for the program to work.
 
 ### Windows
 Either use as Python script in [src/csv-reorder.py](https://github.com/andychien009/csv-reorder/blob/main/src/csv-reorder.py) or pyinstaller packaged win10 encoded *.exe file in [bin/csv-reorder.exe](https://github.com/andychien009/csv-reorder/blob/main/bin/csv-reorder.exe).
 
-No Python installation is required when using the executable. The win10 packaged executable is tested to be working with Windows 11.
+No Python installation is required when using the executable. The executable is tested to be working with Windows 11.
 
-To make things easier, simply put csv-reorder.exe at the folder you wish to execute.
+To make things easier, simply put csv-reorder.exe at the folder where you data is.
 
 _(Optional)_ For more advanced and frequent execution, it is possible to put the csv-reorder.exe executable in a folder and point the $env:path variable to it so that it can be accessible in every directory in PowerShell.
 
@@ -46,11 +46,10 @@ $HOME\bin directory and give it executable flag by
 chmod 744 ~/bin/csv-reorder.py
 ```
 
-
 ## General Use Overview
-To use the tool first supply the following 4 flags and their respective
-arguments to see a preview {--data-file, --data-file-sep, --def-file, 
---def-file-sep}
+To use the tool you must run this from command prompt to supply the following 4 
+flags and their respective arguments to see a preview for the operation {
+--data-file, --data-file-sep, --def-file, --def-file-sep}
 
 Once satisfied with the overview of the output, supply the {--out-file} flag 
 and and the output file to produce the re-ordered file
