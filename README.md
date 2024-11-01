@@ -112,8 +112,10 @@ Once you are comfortable with the assessment you can complete the run by
 issuing the command with the output flag
 
 ```PowerShell
+# note the additional --out-file flag
 csv-reorder.exe --def-file definition.csv --def-file-sep ',' \
-                --data-file data.csv --data-file-sep ','
+                --data-file data.csv --data-file-sep ',' \
+                --out-file out.csv
 
 *** data file is missing the following fields (will be populated as blank )
     D
