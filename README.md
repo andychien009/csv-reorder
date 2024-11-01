@@ -3,17 +3,18 @@
 ## Purpose
 csv-reorder is a simple tool that reorders the columns of the csv file based on a reference definition file; regardless of the casing of the field header.
 
-This tool is useful in cases when
-1. Reordering CSV of the source data to the database is needed in order to 
+This tool is for you if you need to
+1. Reorder CSV of the source data to the database is needed in order to 
 keep the SQL INSERT INTO syntax simple by ensuring the CSV source data mirrors 
 the database schema.
-2. Pairing with applications that does not respect CSV column order (like 
+2. Pair this with applications that does not respect CSV column order (like 
 Tableau Prep) in order to to ensure the CSV file has consistent column order 
 for other business application.
-3. You want to keep things simple, this tool reads all fields in as a string. 
-It does not apply any advance (and unpredictable) algorithm to determine data 
-type and data length that could inadvertently alter your data as part or the
-reorder operations when compare to other methods; no muss no fuss. 
+3. You want to keep your column reordering operations simple. This tool reads 
+all fields in as strings. It does not apply any advance (and unpredictable) 
+algorithm to determine data type and data length that may inadvertently 
+alter your data as part or the reorder operations when compare to other 
+approaches; no muss no fuss.
 
 ## Installation
 Either use as script in src/ or pyinstaller packaged win10 encoded *.exe file 
@@ -27,7 +28,7 @@ $HOME\bin directory and give it executable flag by
 chmod 744 ~/bin/csv-reorder.py
 ```
 
-If using the win10 packaged EXE, putting it in the PATH and running it from
+If using the win10 packaged exe, putting it in the PATH and running it from
 GUI at least once after trusting it will allow it to run in any other directory
 in the command line interface
 
