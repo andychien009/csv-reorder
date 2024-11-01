@@ -1,11 +1,19 @@
 # csv-reorder
 
 ## Purpose
-A simple tool that reorders the columns of the csv file based on a reference
-definition file; regardless of the casing of the field header.
+csv-reorder is a simple tool that reorders the columns of the csv file based on a reference definition file; regardless of the casing of the field header.
 
-This tool reads all fields in as a string, no advance algorithm to determine
-data type that could potentially mess up your data; that's it, no muss no fuss. 
+This tool is useful in cases when
+1. Reordering CSV of the source data to the database is needed in order to 
+keep the SQL INSERT INTO syntax simple by ensuring the CSV source data mirrors 
+the database schema.
+2. Pairing with applications that does not respect CSV column order (like 
+Tableau Prep) in order to to ensure the CSV file has consistent column order 
+for other business application.
+3. You want to keep things simple, this tool reads all fields in as a string, 
+it does not apply any advance (and unpredictable) algorithm to determine data 
+type and data length that could inadvertantly alter your data as part or the
+reorder operations; that's it, no muss no fuss. 
 
 ## Installation
 Either use as script in src/ or pyinstaller packaged win10 encoded *.exe file 
@@ -16,7 +24,7 @@ If you wish to use this in linux, simply place the python script in your
 $HOME\bin directory and give it executable flag by
 
 ```bash
-chmod 744 csv-reorder.py
+chmod 744 ~/bin/csv-reorder.py
 ```
 
 If using the win10 packaged EXE, putting it in the PATH and running it from
@@ -25,35 +33,42 @@ in the command line interface
 
 The win10 packaged executable is tested to be working with Windows 11.
 
-## Use
+## General Use Overview
 To use the tool first supply the following 4 flags and their respective
 arguments to see a preview {--data-file, --data-file-sep, --def-file, 
 --def-file-sep}
 
-Once satisified supply the {--out-file} flag and the output parameter
+Once satisified with the overview of the output, supply the {--out-file} flag 
+and and the output file to produce the re-ordered file
 
 ## Arguments Input
-          -h, --help            show this help message and exit
-          --def-file DEF_FILE   File containing the destination column definition
-          --def-file-sep DEF_FILE_SEP
-                                Separator for the definition file
-          --data-file DATA_FILE
-                                The data file to be adjusted in accordance to the
-                                column specification outlined by --def-file
-          --data-file-sep DATA_FILE_SEP
-                                Separator for the data file
-          --out-file OUT_FILE   The final output of the process
+```
+      -h, --help            show this help message and exit
+      --def-file DEF_FILE   File containing the destination column definition
+      --def-file-sep DEF_FILE_SEP
+                            Separator for the definition file
+      --data-file DATA_FILE
+                            The data file to be adjusted in accordance to the
+                            column specification outlined by --def-file
+      --data-file-sep DATA_FILE_SEP
+                            Separator for the data file
+      --out-file OUT_FILE   The final output of the process
+```
 
 The following are the files are used for the example
 
 **data.csv**
- a,b,c
- 11,12,13
- 21,22,23
+```
+a,b,c
+11,12,13
+21,22,23
+```
 
 **definition.csv**
- a,c,d
- 11,12,13
+```
+a,c,d
+11,12,13
+```
 
 ```PowerShell
 csv-reorder.exe --def-file definition.csv --def-file-sep ',' \
