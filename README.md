@@ -19,9 +19,9 @@ approaches; no muss no fuss.
 ## Setup/Installation
 There is no user interface to this program. Double clicking on it does not work. It will have to be executed through PowerShell or bash so you can supply additional parameters for the program to work.
 
-### Running it As Python Script
+### Running it as Python Script
 Minimum Requirement
-* Python (tested with 3.12.3)
+* Python (may work with earlier Python version, but tested with 3.12.3)
 
 Simply download the script [src/csv-reorder.py](https://github.com/andychien009/csv-reorder/blob/main/src/csv-reorder.py) and place it in the directory you wish to run and open a command prompt (bash or PowerShell). 
 
@@ -30,17 +30,22 @@ cd "<directory>"
 python3 ./csv-reorder.py --help
 ```
 
-```bash
+```PowerShell
 cd "<directory>"
 python3 .\csv-reorder.py --help
 ```
 
-### As Windows Executable
+### Running it as Windows Executable
 Download the pyinstaller packaged Windows 11 packaged *.exe file at [bin/csv-reorder.exe](https://github.com/andychien009/csv-reorder/blob/main/bin/csv-reorder.exe).
 
 No Python installation is required when using the executable. The executable is tested to be working with Windows 11.
 
 To make things easier, simply put csv-reorder.exe at the folder where you data is.
+
+```PowerShell
+cd "<directory>"
+.\csv-reorder.py --help
+```
 
 ### Optional: Running it from PATH
 
@@ -52,6 +57,8 @@ it executable flag by
 ```bash
 # make sure $HOME/bin or ~/bin is part of the PATH
 echo $PATH
+
+# copy to the directory
 
 # move csv-reorder.py there and allow for it to execute
 chmod 744 ~/bin/csv-reorder.py
