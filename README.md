@@ -1,20 +1,29 @@
-# csv-twist
+# csv-reorder
 
 ## Purpose
 A simple tool that reorders the columns of the csv file based on a reference
-*definition file*; regardless of the casing of the field header.
+definition file; regardless of the casing of the field header.
 
 This tool reads all fields in as a string, no advance algorithm to determine
-data type; that's it, no muss no fuss. 
+data type that could potentially mess up your data; that's it, no muss no fuss. 
 
 ## Installation
-Either use as script in src/ or pyinstall packaged win10 encoded *.exe file in 
-bin/win10/. The pyinstall packaed EXE will not work in any other environment
-other than the one it was packaged from.
+Either use as script in src/ or pyinstaller packaged win10 encoded *.exe file 
+in bin/csv-reorder.exe. The pyinstall packaged EXE will not work in any other 
+environment other than the one it was packaged from. 
+
+If you wish to use this in linux, simply place the python script in your
+$HOME\bin directory and give it executable flag by
+
+```bash
+chmod 744 csv-reorder.py
+```
 
 If using the win10 packaged EXE, putting it in the PATH and running it from
 GUI at least once after trusting it will allow it to run in any other directory
 in the command line interface
+
+The win10 packaged executable is tested to be working with Windows 11.
 
 ## Use
 To use the tool first supply the following 4 flags and their respective
@@ -34,6 +43,60 @@ Once satisified supply the {--out-file} flag and the output parameter
           --data-file-sep DATA_FILE_SEP
                                 Separator for the data file
           --out-file OUT_FILE   The final output of the process
+
+The following are the files are used for the example
+
+**data.csv**
+ a,b,c
+ 11,12,13
+ 21,22,23
+
+**definition.csv**
+ a,c,d
+ 11,12,13
+
+```PowerShell
+csv-reorder.exe --def-file definition.csv --def-file-sep ',' \
+                --data-file data.csv --data-file-sep ','
+
+*** data file is missing the following fields (will be populated as blank )
+    D
+
+
+*** definition file is missing the following fields (will be dropped)
+    B
+```
+
+When you do not supply the output file as the final parameter you can get an
+overview to the following
+1. Columns that will be dropped because they are not in the definition file
+2. Columns that will be added as blank because they are not in the data file
+
+Once you are comfortable with the assessment you can complete the run by
+issuing the command with the output flag
+
+```PowerShell
+csv-reorder.exe --def-file definition.csv --def-file-sep ',' \
+                --data-file data.csv --data-file-sep ','
+
+*** data file is missing the following fields (will be populated as blank )
+    D
+
+
+*** definition file is missing the following fields (will be dropped)
+    B
+```
+
+**out.csv**
+ A,C,D
+ 11,13,
+ 21,23,
+
+You can see from the final result that the out.csv file now contains data that
+conforms with the definition.csv provided in the same order.
+
+Also note the field names have been capitalized. If that is not desired,
+simply open the definition.csv and copy the header over.
 
 ## Known Issue
 This tool outputs header column in capital case. Take the header from

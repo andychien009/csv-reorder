@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 import argparse
 import csv
@@ -11,7 +11,7 @@ import string
 # https://stackoverflow.com/questions/8689795/how-can-i-remove-non-ascii-characters-but-leave-periods-and-spaces-using-python
 printable = set(string.printable)
 
-parser = argparse.ArgumentParser(description="Process CSV files and adjust the fields according to specification provided while outputting meta information that could be helpful.\nAuthor: Andy Chien (hsiangan.chien@utoronto.ca)")
+parser = argparse.ArgumentParser(description="Process CSV files and adjust the fields according to specification provided while outputting meta information that could be helpful.\nAuthor: Andy Chien (andy_chien@hotmail.com)")
 parser.add_argument('--def-file', type=str, required=True, help='File containing the destination column definition')
 parser.add_argument('--def-file-sep', type=str, required=True, help='Separator for the definition file')
 parser.add_argument('--data-file', type=str, required=True, help='The data file to be adjusted in accordance to the column specification outlined by --def-file')
@@ -106,7 +106,7 @@ for i in defheader:
 # print(map)
 
 if args.out_file is not None:
-    with open(args.data_file) as csvsrc, open(args.out_file, 'w') as csvout:
+    with open(args.data_file) as csvsrc, open(args.out_file, 'w', newline='\n') as csvout:
         csvreader = csv.reader(csvsrc, delimiter=data_file_sep)
         csvwriter = csv.writer(csvout, delimiter=data_file_sep)
         csvwriter.writerow(defheader);
