@@ -1,4 +1,4 @@
-# csv-reorder
+﻿# csv-reorder
 
 ## Purpose
 csv-reorder is a simple tool that reorders the columns of the csv file based on a reference definition file; regardless of the casing of the field header.
@@ -10,14 +10,14 @@ the database schema.
 2. Pairing with applications that does not respect CSV column order (like 
 Tableau Prep) in order to to ensure the CSV file has consistent column order 
 for other business application.
-3. You want to keep things simple, this tool reads all fields in as a string, 
-it does not apply any advance (and unpredictable) algorithm to determine data 
-type and data length that could inadvertantly alter your data as part or the
-reorder operations; that's it, no muss no fuss. 
+3. You want to keep things simple, this tool reads all fields in as a string. 
+It does not apply any advance (and unpredictable) algorithm to determine data 
+type and data length that could inadvertently alter your data as part or the
+reorder operations when compare to other methods; no muss no fuss. 
 
 ## Installation
 Either use as script in src/ or pyinstaller packaged win10 encoded *.exe file 
-in bin/csv-reorder.exe. The pyinstall packaged EXE will not work in any other 
+in bin/csv-reorder.exe. The pyinstaller packaged EXE will not work in any other 
 environment other than the one it was packaged from. 
 
 If you wish to use this in linux, simply place the python script in your
@@ -38,7 +38,7 @@ To use the tool first supply the following 4 flags and their respective
 arguments to see a preview {--data-file, --data-file-sep, --def-file, 
 --def-file-sep}
 
-Once satisified with the overview of the output, supply the {--out-file} flag 
+Once satisfied with the overview of the output, supply the {--out-file} flag 
 and and the output file to produce the re-ordered file
 
 ## Arguments Input
@@ -62,6 +62,14 @@ The following are the files are used for the example
 a,b,c
 11,12,13
 21,22,23
+```
+
+One can acquire the database schema ordering easily by doing a SELECT * query
+and save the result as CSV, which is exactly as per the design of this tool.
+
+```SQL
+SELECT TOP 1 *
+FROM TBLNAME;
 ```
 
 **definition.csv**
@@ -103,12 +111,15 @@ csv-reorder.exe --def-file definition.csv --def-file-sep ',' \
 ```
 
 **out.csv**
- A,C,D
- 11,13,
- 21,23,
+```
+A,C,D
+11,13,
+21,23,
+```
 
 You can see from the final result that the out.csv file now contains data that
-conforms with the definition.csv provided in the same order.
+conforms with the definition.csv provided in the same order. It only contains 
+data from the data.csv.
 
 Also note the field names have been capitalized. If that is not desired,
 simply open the definition.csv and copy the header over.
@@ -121,7 +132,7 @@ This tool does not process fields that are not of printable characters.
 
 ## License and Rights
 The content of this repo is written and put together by Andy Chien. You can
-reach me at andy_chienAThotmail.com.
+reach me at andy_chien@hotmail.com.
 
 All content in this repo is under GNU GPL v3. See LICENSE for more information
 
