@@ -17,10 +17,28 @@ alter your data as part or the reorder operations when compare to other
 approaches; no muss no fuss.
 
 ## Installation
-Either use as script in src/ or pyinstaller packaged win10 encoded *.exe file 
-in bin/csv-reorder.exe. The pyinstaller packaged EXE will not work in any other 
-environment other than the one it was packaged from. 
+There is no user interface to this program, it will have to be executed through PowerShell or bash.
 
+### Windows
+Either use as Python script in [src/csv-reorder.py](https://github.com/andychien009/csv-reorder/blob/main/src/csv-reorder.py) or pyinstaller packaged win10 encoded *.exe file in [bin/csv-reorder.exe](https://github.com/andychien009/csv-reorder/blob/main/bin/csv-reorder.exe).
+
+No Python installation is required when using the executable. The win10 packaged executable is tested to be working with Windows 11.
+
+To make things easier, simply put csv-reorder.exe at the folder you wish to execute.
+
+_(Optional)_ For more advanced and frequent execution, it is possible to put the csv-reorder.exe executable in a folder and point the $env:path variable to it so that it can be accessible in every directory in PowerShell.
+
+```PowerShell
+New-Item -Path $profile -Type File
+notepad.exe "$profile"
+```
+
+**$profile**
+```PowerShell
+$env:path = "<path to your bin dir>;" + $env:path
+```
+
+### Linux
 If you wish to use this in linux, simply place the python script in your
 $HOME\bin directory and give it executable flag by
 
@@ -28,11 +46,6 @@ $HOME\bin directory and give it executable flag by
 chmod 744 ~/bin/csv-reorder.py
 ```
 
-If using the win10 packaged exe, putting it in the PATH and running it from
-GUI at least once after trusting it will allow it to run in any other directory
-in the command line interface
-
-The win10 packaged executable is tested to be working with Windows 11.
 
 ## General Use Overview
 To use the tool first supply the following 4 flags and their respective
