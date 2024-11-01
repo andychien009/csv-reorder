@@ -139,6 +139,14 @@ data from the data.csv.
 Also note the field names have been capitalized. If that is not desired,
 simply open the definition.csv and copy the header over.
 
+## Notes on the Delimiter/Separators
+You can use different delimiter for your data file and for your definition file.
+
+In addition, you can use the single character 't' to represent tab delimited 
+file.
+
+The output file will always share the same separator/delimiter as the data file. This program is not intended to be used to convert between different delimiter.
+
 ## Known Issue
 This tool outputs header column in capital case. Take the header from
 the definition file if you so choose.
