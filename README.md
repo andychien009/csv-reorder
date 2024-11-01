@@ -16,19 +16,57 @@ algorithm to determine data type and data length that may inadvertently
 alter your data as part or the reorder operations when compare to other 
 approaches; no muss no fuss.
 
-## Installation
+## Setup/Installation
 There is no user interface to this program. Double clicking on it does not work. It will have to be executed through PowerShell or bash so you can supply additional parameters for the program to work.
 
-### Windows
-Either use as Python script in [src/csv-reorder.py](https://github.com/andychien009/csv-reorder/blob/main/src/csv-reorder.py) or pyinstaller packaged win10 encoded *.exe file in [bin/csv-reorder.exe](https://github.com/andychien009/csv-reorder/blob/main/bin/csv-reorder.exe).
+### Running it As Python Script
+Minimum Requirement
+* Python (tested with 3.12.3)
+
+Simply download the script [src/csv-reorder.py](https://github.com/andychien009/csv-reorder/blob/main/src/csv-reorder.py) and place it in the directory you wish to run and open a command prompt (bash or PowerShell). 
+
+```bash
+cd "<directory>"
+python3 ./csv-reorder.py --help
+```
+
+```bash
+cd "<directory>"
+python3 .\csv-reorder.py --help
+```
+
+### As Windows Executable
+Download the pyinstaller packaged Windows 11 packaged *.exe file at [bin/csv-reorder.exe](https://github.com/andychien009/csv-reorder/blob/main/bin/csv-reorder.exe).
 
 No Python installation is required when using the executable. The executable is tested to be working with Windows 11.
 
 To make things easier, simply put csv-reorder.exe at the folder where you data is.
 
-_(Optional)_ For more advanced and frequent execution, it is possible to put the csv-reorder.exe executable in a folder and point the $env:path variable to it so that it can be accessible in every directory in PowerShell.
+### Optional: Running it from PATH
+
+For runs against multiple directories you may wish to add this to a folder in your PATH variable.
+
+In linux, simply place the python script in your $HOME\bin directory and give 
+it executable flag by
+
+```bash
+# make sure $HOME/bin or ~/bin is part of the PATH
+echo $PATH
+
+# move csv-reorder.py there and allow for it to execute
+chmod 744 ~/bin/csv-reorder.py
+
+csv-reorder.py --help
+```
+
+For Windows you may want to put csv-reorder.exe executable in a folder and point the $env:path variable to it so that it can be accessible in every directory in PowerShell.
 
 ```PowerShell
+# check $env:path variable
+echo $env:path
+
+# add a profile for PowerShell that will run when we
+# open a new shell
 New-Item -Path $profile -Type File
 notepad.exe "$profile"
 ```
@@ -36,14 +74,6 @@ notepad.exe "$profile"
 **$profile**
 ```PowerShell
 $env:path = "<path to your bin dir>;" + $env:path
-```
-
-### Linux
-If you wish to use this in linux, simply place the python script in your
-$HOME\bin directory and give it executable flag by
-
-```bash
-chmod 744 ~/bin/csv-reorder.py
 ```
 
 ## General Use Overview
